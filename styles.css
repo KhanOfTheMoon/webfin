@@ -1,4 +1,4 @@
-/* CSS variables (light/dark) */
+/* Темы */
 :root {
   --brand: #2354b8;
   --bg: #f6f7fb;
@@ -49,7 +49,7 @@ a { color: inherit; text-decoration: none; }
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 16px 16px;
 }
 
 .container--wide { max-width: 1280px; }
@@ -269,8 +269,7 @@ main.container,
 @media (min-width: 1280px) {
   .container { max-width: 1280px; }
 }
-
-/* Tablets & phones */
+/* Tablet and phone */
 @media (max-width: 768px) {
   /* Header: wrap and center items */
   .header__row { flex-wrap: wrap; align-items: center; gap: 8px; }
@@ -285,15 +284,12 @@ main.container,
   .header__row > .search input { width: 100%; }
 
   /* Leave only burger & theme */
-  .header__row > .icon-btn:not(.menu-toggle):not(#themeToggle) { display: none; }
+  .header__row > .icon-btn:not(.menu-toggle):not(#themeToggle) {
+    display: none !important;
+  }
 
-  .menu-toggle { display: inline-grid; margin-left: auto; }
-  #themeToggle { display: inline-grid; }
-
-  /* Force inline-flex on buttons */
-  .header .header__row .icon-btn,
-  .header .header__row #themeToggle,
-  .header .header__row .menu-toggle {
+  .menu-toggle,
+  #themeToggle {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -327,12 +323,8 @@ main.container,
     gap: 10px;
     align-items: start;
   }
-  #items img {
-    width: 56px; height: 72px; object-fit: cover; border-radius: 6px;
-  }
-  #items > * > :not(img):not(:last-child) {
-    font-size: 14px; line-height: 1.25; overflow-wrap: anywhere;
-  }
+  #items img { width: 56px; height: 72px; object-fit: cover; border-radius: 6px; }
+  #items > * > :not(img):not(:last-child) { font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; }
   #items > * > :last-child { white-space: nowrap; font-weight: 700; justify-self: end; }
 
   #sum { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
@@ -343,6 +335,22 @@ main.container,
   .footer__nav { flex-wrap: wrap; justify-content: center; }
   .footer__contact { text-align: center; }
 }
+
+@media (max-width: 420px) {
+  .list { grid-template-columns: 1fr; }
+  .menu-toggle { display: inline-flex; margin-left: 0; }
+
+  #items > * {
+    grid-template-columns: 44px 1fr;
+    grid-template-areas:
+      "img title"
+      "img price";
+  }
+  #items > * img { grid-area: img; width: 44px; height: 60px; }
+  #items > * :not(img):not(:last-child) { grid-area: title; }
+  #items > * :last-child { grid-area: price; }
+}
+
 
 /* Phones */
 @media (max-width: 420px) {

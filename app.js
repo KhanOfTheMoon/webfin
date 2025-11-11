@@ -62,7 +62,7 @@ window.helpers = (function () {
     read, write
   };
 })();
-// === Theme toggle + persist in localStorage ===
+// Переключение тем
 (function(){
   const KEY = 'qbook_theme'; // 'light' | 'dark'
   const root = document.documentElement;
@@ -72,7 +72,7 @@ window.helpers = (function () {
     try { localStorage.setItem(KEY, t); } catch(e){}
   }
 
-  // Инициализация: из LS или по системной теме
+  // Проверка какая тема
   const saved = (() => {
     try { return localStorage.getItem(KEY); } catch(e){ return null; }
   })();
