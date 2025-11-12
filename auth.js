@@ -1,7 +1,7 @@
 helpers.bindHeaderSearch('globalSearch','globalQuery');
 
 $(function(){
-  // simple in-place "users db" by email in localStorage
+  // Автозаполнение почты из бд
   const KEY='qbook_users';
   const users = JSON.parse(localStorage.getItem(KEY) || '{}');
 
